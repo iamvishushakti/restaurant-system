@@ -1,0 +1,110 @@
+{
+  "info": {
+    "_postman_id": "b8a92341-9a7c-482a-a922-83b692018274",
+    "name": "Restaurant API - User Auth & OTP",
+    "description": "Postman collection for Restaurant System User Email & Redis OTP Verification",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "Server health status check"
+      },
+      "response": []
+    },
+    {
+      "name": "Send OTP (Email + Redis)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/user/send-otp",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "user",
+            "send-otp"
+          ]
+        },
+        "description": "Send 6-digit OTP to user email and save in Redis with 5-minute TTL. If OTP already exists in Redis, resends the same OTP."
+      },
+      "response": []
+    },
+    {
+      "name": "Verify OTP (Redis Match)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"otp\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/user/verify-otp",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "user",
+            "verify-otp"
+          ]
+        },
+        "description": "Verifies entered OTP with the OTP saved in Redis. If matched, deletes OTP from Redis."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "vkshakti.office@gmail.com",
+      "type": "string"
+    }
+  ]
+}

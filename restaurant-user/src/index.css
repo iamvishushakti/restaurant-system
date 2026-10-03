@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #f7f3eb;
+    color: #1a1612;
+    font-family: 'Newsreader', Georgia, serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    background-image: linear-gradient(rgba(247, 243, 235, 0.82), rgba(247, 243, 235, 0.88)), url('/newspaper-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Custom Newspaper Typography Classes */
+.font-masthead {
+  font-family: 'UnifrakturMaguntia', 'Cinzel', 'Playfair Display', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-editorial {
+  font-family: 'Newsreader', 'Merriweather', Georgia, serif;
+}
+
+.font-typewriter {
+  font-family: 'Courier Prime', Courier, monospace;
+}
+
+/* Newspaper Double Border Utility */
+.border-newspaper-double {
+  border-style: double;
+  border-width: 4px;
+  border-color: #1a1612;
+}
+
+.border-newspaper-thick-thin {
+  border-top: 4px solid #1a1612;
+  border-bottom: 1px solid #1a1612;
+}
+
+.border-newspaper-thin-thick {
+  border-top: 1px solid #1a1612;
+  border-bottom: 4px solid #1a1612;
+}
+
+/* Vintage Paper Drop Shadow */
+.newspaper-shadow {
+  box-shadow: 4px 4px 0px rgba(26, 22, 18, 0.9);
+}
+
+.newspaper-shadow-lg {
+  box-shadow: 6px 6px 0px rgba(26, 22, 18, 0.95);
+}
+
+.newspaper-shadow-sm {
+  box-shadow: 2px 2px 0px rgba(26, 22, 18, 0.85);
+}
+
+/* Stamp Border */
+.stamp-border {
+  border: 2px solid #991b1b;
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.2);
+}
+
+/* Hide scrollbar for category tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Offer Voucher & Floating Icon Animations */
+@keyframes newspaperSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDownToMiddle {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(120px) scale(0.6);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-gentle-bounce {
+  animation: bounceGentle 2.5s ease-in-out infinite;
+}
+
+/* Continuous Newspaper Telegraph Ticker */
+@keyframes newsTicker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-news-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: newsTicker 32s linear infinite;
+}
+
+.animate-news-ticker:hover {
+  animation-play-state: paused;
+}
+
+
+
